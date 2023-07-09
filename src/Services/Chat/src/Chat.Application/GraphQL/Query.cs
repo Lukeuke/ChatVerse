@@ -6,12 +6,12 @@ namespace Chat.Application.GraphQL;
 
 public class Query
 {
-    private readonly IUserService _userService;
+    private readonly IMessageService _messageService;
     private readonly IGroupService _groupService;
 
-    public Query(IUserService userService, IGroupService groupService)
+    public Query(IMessageService messageService, IGroupService groupService)
     {
-        _userService = userService;
+        _messageService = messageService;
         _groupService = groupService;
     }
 
@@ -19,7 +19,7 @@ public class Query
     [UseFiltering]
     public IQueryable<Group> Groups => _groupService.GetAll();
     
-    [UsePaging(SchemaType = typeof(UserType))]
+    [UsePaging(SchemaType = typeof(MessageType))]
     [UseFiltering]
-    public IQueryable<User> Users => _userService.GetAll();
+    public IQueryable<Message> Messages => _messageService.GetAll();
 }

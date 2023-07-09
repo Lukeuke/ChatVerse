@@ -13,8 +13,8 @@ public class GroupResolver
         _groupService = groupService;
     }
 
-    public Group GetGroup(User user, IResolverContext context)
+    public Group GetGroup(Message message, IResolverContext context)
     {
-        return _groupService.GetAll().FirstOrDefault(x => x.Id == user.GroupId)!;
+        return _groupService.GetAll().FirstOrDefault(x => x.Id == message.GroupId)!;
     }
 }

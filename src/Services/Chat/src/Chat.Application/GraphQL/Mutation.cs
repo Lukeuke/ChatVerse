@@ -1,19 +1,20 @@
 ﻿using Chat.Application.Services;
 using Chat.Domain.DTOs;
+using HotChocolate.Subscriptions;
 
 namespace Chat.Application.GraphQL;
 
 public class Mutation
 {
-    private readonly IUserService _userService;
+    private readonly IMessageService _messageService;
 
-    public Mutation(IUserService userService)
+    public Mutation(IMessageService messageService)
     {
-        _userService = userService;
+        _messageService = messageService;
     }
 
-    public bool CreateUser(CreateUserDto request)
+    public async Task<bool> CreateMessage(CreateMessageDto request, [Service] ITopicEventSender eventSender)
     {
-        return _userService.Create(request);
+        return _messageService.Create(request, eventSender);
     }
 }
