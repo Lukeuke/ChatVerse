@@ -1,10 +1,15 @@
 using Chat.Application.GraphQL;
 using Chat.Application.Services;
 using Chat.Application.Types;
-using HotChocolate.AspNetCore;
-using HotChocolate.Subscriptions;
+using Chat.Domain.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<ChatDbContext>(o =>
+{
+    o.UseNpgsql(builder.Configuration.GetConnectionString("PostgresDb"));
+});
 
 builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<IGroupService, GroupService>();
