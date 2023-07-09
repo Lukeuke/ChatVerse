@@ -1,8 +1,9 @@
-﻿using Chat.Domain.Models;
+﻿using Chat.Domain.Data;
+using Chat.Domain.Models;
 
 namespace Chat.Application.Services;
 
 public interface IGroupService
 {
-    IQueryable<Group> GetAll();
+    IQueryable<Group> GetAll(ChatDbContext context);
 }
