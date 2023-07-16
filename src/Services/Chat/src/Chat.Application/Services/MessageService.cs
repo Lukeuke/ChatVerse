@@ -3,24 +3,11 @@ using Chat.Domain.Data;
 using Chat.Domain.DTOs;
 using Chat.Domain.Models;
 using HotChocolate.Subscriptions;
-using Microsoft.EntityFrameworkCore;
 
 namespace Chat.Application.Services;
 
 public class MessageService : IMessageService
 {
-    private readonly ChatDbContext _context;
-
-    public MessageService(ChatDbContext context)
-    {
-        _context = context;
-    }
-    
-    public IQueryable<Message> GetAll()
-    {
-        return _context.Messages.AsQueryable();
-    }
-
     public async Task<bool> Create(ChatDbContext context, CreateMessageDto request, [Service] ITopicEventSender eventSender, Guid? groupId)
     {
         if (groupId.HasValue && !IsUserInGroup(request.SenderId, groupId.Value))

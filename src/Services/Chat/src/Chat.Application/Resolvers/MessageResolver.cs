@@ -16,6 +16,7 @@ public class MessageResolver
 
     public IEnumerable<Message> GetMessages(Group group, IResolverContext context)
     {
-        return _messageService.GetAll().Where(x => x.GroupId == group.Id);
+        //return _messageService.GetAll().Where(x => x.GroupId == group.Id);
+        return Array.Empty<Message>();
     }
 }

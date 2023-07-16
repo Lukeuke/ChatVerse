@@ -16,6 +16,7 @@ public class GroupResolver
 
     public Group GetGroup(Message message, IResolverContext context)
     {
-        return _groupService.GetAll().FirstOrDefault(x => x.Id == message.GroupId)!;
+        //return _groupService.GetAll().FirstOrDefault(x => x.Id == message.GroupId)!;
+        return new Group();
     }
 }
