@@ -13,8 +13,13 @@ public class MessageService : IMessageService
         return context.Messages.AsQueryable();
     }
 
-    public bool Create(CreateMessageDto request, [Service] ITopicEventSender eventSender, ChatDbContext context)
+    public bool Create(CreateMessageDto request, [Service] ITopicEventSender eventSender, ChatDbContext context, Guid? groupId)
     {
+        if (groupId.HasValue && !IsUserInGroup(request.SenderId, groupId.Value, context))
+        {
+            return false;
+        }
+        
         var message = new Message
         {
             Id = Guid.NewGuid(),
@@ -25,10 +30,15 @@ public class MessageService : IMessageService
         
         context.Messages.Add(message);
         
-        //TODO: check if SenderId is in the GroupId and then send the event
         eventSender.SendAsync(nameof(Subscription.MessageCreated), message);
 
         context.SaveChanges();
+        return true;
+    }
+
+    private bool IsUserInGroup(string requestSenderId, Guid groupId, ChatDbContext context)
+    {
+        // TODO: Check if user is in group from Group Service through RabbitMQ
         return true;
     }
 }

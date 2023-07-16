@@ -16,8 +16,8 @@ public class Mutation
         _context = context;
     }
 
-    public async Task<bool> CreateMessage(CreateMessageDto request, [Service] ITopicEventSender eventSender)
+    public async Task<bool> CreateMessage(CreateMessageDto request, [Service] ITopicEventSender eventSender, Guid? groupId)
     {
-        return _messageService.Create(request, eventSender, _context);
+        return _messageService.Create(request, eventSender, _context, groupId);
     }
 }
