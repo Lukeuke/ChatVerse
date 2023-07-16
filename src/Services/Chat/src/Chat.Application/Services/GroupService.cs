@@ -5,8 +5,15 @@ namespace Chat.Application.Services;
 
 public class GroupService : IGroupService
 {
-    public IQueryable<Group> GetAll(ChatDbContext context)
+    private readonly ChatDbContext _context;
+
+    public GroupService(ChatDbContext context)
     {
-        return context.Groups.AsQueryable();
+        _context = context;
+    }
+    
+    public IQueryable<Group> GetAll()
+    {
+        return _context.Groups.AsQueryable();
     }
 }

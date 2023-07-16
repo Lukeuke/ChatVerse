@@ -7,6 +7,6 @@ namespace Chat.Application.Services;
 
 public interface IMessageService
 {
-    IQueryable<Message> GetAll([Service] ChatDbContext context);
-    bool Create(CreateMessageDto request, [Service] ITopicEventSender eventSender, [Service] ChatDbContext context, Guid? groupId);
+    IQueryable<Message> GetAll();
+    Task<bool> Create(ChatDbContext context,CreateMessageDto request, [Service] ITopicEventSender eventSender, Guid? groupId);
 }

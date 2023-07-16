@@ -7,17 +7,12 @@ namespace Chat.Application.GraphQL;
 
 public class Mutation
 {
-    private readonly IMessageService _messageService;
-    private readonly ChatDbContext _context;
-
-    public Mutation(IMessageService messageService, ChatDbContext context)
+    public async Task<bool> CreateMessage([Service] ChatDbContext context,
+        [Service] IMessageService messageService,
+        CreateMessageDto request, 
+        [Service] ITopicEventSender eventSender, 
+        Guid? groupId)
     {
-        _messageService = messageService;
-        _context = context;
-    }
-
-    public async Task<bool> CreateMessage(CreateMessageDto request, [Service] ITopicEventSender eventSender, Guid? groupId)
-    {
-        return _messageService.Create(request, eventSender, _context, groupId);
+        return await messageService.Create(context, request, eventSender, groupId);
     }
 }

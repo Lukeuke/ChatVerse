@@ -5,5 +5,5 @@ namespace Chat.Application.Services;
 
 public interface IGroupService
 {
-    IQueryable<Group> GetAll(ChatDbContext context);
+    IQueryable<Group> GetAll();
 }
