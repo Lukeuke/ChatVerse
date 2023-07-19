@@ -1,9 +1,11 @@
 ﻿using Chat.Domain.Models;
+using HotChocolate.Authorization;
 
 namespace Chat.Application.GraphQL;
 
 public class Subscription
 {
+    [Authorize]
     [Subscribe]
     public Message? MessageCreated([EventMessage] Message message, string? groupId) 
     {
