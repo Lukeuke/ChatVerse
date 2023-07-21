@@ -6,25 +6,25 @@ namespace Web.Application.Repositories.Identity;
 
 public class IdentityRepository : IIdentityRepository
 {
-    private readonly HttpClient _httpClient;
+    private readonly IHttpClientFactory _clientFactory;
 
-    public IdentityRepository(HttpClient httpClient)
+    public IdentityRepository(IHttpClientFactory clientFactory)
     {
-        _httpClient = httpClient;
-        _httpClient.BaseAddress = new Uri("http://localhost:5222");
+        _clientFactory = clientFactory;
     }
     
     public async Task<(bool, object)> RegisterUser(RegisterUserDto userDto)
-    {        
+    {
+        var client = _clientFactory.CreateClient("identity");
         var serializedUser = JsonConvert.SerializeObject(userDto);
 
-        var requestMessage = new HttpRequestMessage(HttpMethod.Put, _httpClient.BaseAddress + "auth");
+        var requestMessage = new HttpRequestMessage(HttpMethod.Put, client.BaseAddress + "auth");
         requestMessage.Content = new StringContent(serializedUser);
 
         requestMessage.Content.Headers.ContentType
             = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
-        var response = await _httpClient.SendAsync(requestMessage);
+        var response = await client.SendAsync(requestMessage);
         
         var responseBody = await response.Content.ReadAsStringAsync();
 
@@ -39,14 +39,15 @@ public class IdentityRepository : IIdentityRepository
 
     public async Task<(bool, object)> LoginUser(SignInRequestDto userDto)
     {
+        var client = _clientFactory.CreateClient("identity");
         var serializedUser = JsonConvert.SerializeObject(userDto);
         
-        var requestMessage = new HttpRequestMessage(HttpMethod.Post, _httpClient.BaseAddress + "auth");
+        var requestMessage = new HttpRequestMessage(HttpMethod.Post, client.BaseAddress + "auth");
         requestMessage.Content = new StringContent(serializedUser);
         requestMessage.Content.Headers.ContentType
             = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
         
-        var response = await _httpClient.SendAsync(requestMessage);
+        var response = await client.SendAsync(requestMessage);
         
         var responseBody = await response.Content.ReadAsStringAsync();
         
