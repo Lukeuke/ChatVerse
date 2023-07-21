@@ -1,0 +1,31 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<PageTitle>Welcome</PageTitle>
+<AuthorizeView>
+    <NotAuthorized>
+        Please Sign-In in order to use this app.
+    </NotAuthorized>
+    <Authorized>
+        <h1>Hello, @Username!</h1>
+
+        Welcome to your task tracking app to keep you consistant.
+    </Authorized>
+</AuthorizeView>
+
+@code {
+    private string Username { get; set; } = null!;
+
+    protected override async Task<Task> OnInitializedAsync()
+    {
+        await GetUsername();
+        return base.OnInitializedAsync();
+    }
+
+    private async Task GetUsername()
+    {
+        Username = await LocalStorage.GetItemAsStringAsync("username");
+    }
+
+}

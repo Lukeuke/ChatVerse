@@ -9,7 +9,13 @@
     <ItemGroup>
       <PackageReference Include="Blazored.LocalStorage" Version="4.3.0" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.9" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\Services\Identity\src\Identity.Domain\Identity.Domain.csproj" />
+      <ProjectReference Include="..\Web.Domain\Web.Domain.csproj" />
     </ItemGroup>
 
 </Project>

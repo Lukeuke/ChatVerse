@@ -1,0 +1,10 @@
+﻿<a style="cursor: pointer">@Username</a>
+@code {
+    private string Username { get; set; } = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Username = await LocalStorage.GetItemAsStringAsync("username");
+    }
+
+}
