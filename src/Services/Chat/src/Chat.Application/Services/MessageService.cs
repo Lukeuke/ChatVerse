@@ -1,6 +1,7 @@
 ﻿using Chat.Application.GraphQL;
 using Chat.Domain.Data;
 using Chat.Domain.DTOs;
+using Chat.Domain.Helpers.Authorization;
 using Chat.Domain.Models;
 using HotChocolate.Subscriptions;
 
@@ -30,7 +31,7 @@ public class MessageService : IMessageService
         {
             Id = Guid.NewGuid(),
             Content = request.Content,
-            SenderId = request.SenderId,
+            SenderId = JwtHelper.ParseTokenIntoUserId(token).ToString(),
             GroupId = request.GroupId
         };
 

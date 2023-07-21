@@ -18,24 +18,9 @@
     <projectFile profileName="https">src/Services/Identity/src/Identity.Api/Identity.Api.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f074126-9ff2-4f58-a50f-0b9006b5cf46" name="Changes" comment="Adding users to the group">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Query.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Query.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Resolvers/GroupResolver.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Resolvers/MessageResolver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Resolvers/MessageResolver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/GroupService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/IGroupService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Types/GroupType.cs" beforeDir="false" />
+    <list default="true" id="1f074126-9ff2-4f58-a50f-0b9006b5cf46" name="Changes" comment="Removed Groups Table from ```Chat Service``">
+      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/MessageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/MessageService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Chat.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Chat.Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Data/ChatDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Data/ChatDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Migrations/20230709212034_Initial.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Migrations/20230709212034_Initial.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Migrations/ChatDbContextModelSnapshot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Models/Group.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Models/Message.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Models/Message.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/GroupRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/GroupRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/IGroupRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/IGroupRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +60,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.Group.Api: https">
+  <component name="RunManager" selected=".NET Launch Settings Profile.Chat.Api: https">
     <configuration name="BlazorApp1: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Clients/Web/src/BlazorApp1/BlazorApp1.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
@@ -312,7 +297,7 @@
       <updated>1689778957099</updated>
       <workItem from="1689778963083" duration="6746000" />
       <workItem from="1689800108217" duration="723000" />
-      <workItem from="1689934714822" duration="14658000" />
+      <workItem from="1689934714822" duration="15041000" />
     </task>
     <task id="LOCAL-00001" summary="+ Authorization in GraphQL">
       <created>1689783414960</created>
@@ -370,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689948376810</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Removed Groups Table from ```Chat Service``">
+      <created>1689950041800</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1689950041800</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,25 +388,7 @@
     <MESSAGE value="Checking if Member is in the Group before sending the Message" />
     <MESSAGE value="Creating Groups in ``Group Service``" />
     <MESSAGE value="Adding users to the group" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding users to the group" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/src/Services/Group/src/Group.Application/GroupRepository.cs</url>
-          <line>25</line>
-          <properties documentPath="C:\Users\lukas\RiderProjects\ChatVerse\src\Services\Group\src\Group.Application\GroupRepository.cs" initialLine="23" containingFunctionPresentation="method 'CheckMember'">
-            <startOffsets>
-              <option value="638" />
-            </startOffsets>
-            <endOffsets>
-              <option value="765" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Removed Groups Table from ```Chat Service``" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed Groups Table from ```Chat Service``" />
   </component>
 </project>
