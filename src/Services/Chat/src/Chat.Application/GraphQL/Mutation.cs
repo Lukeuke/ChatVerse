@@ -3,6 +3,8 @@ using Chat.Domain.Data;
 using Chat.Domain.DTOs;
 using HotChocolate.Authorization;
 using HotChocolate.Subscriptions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Chat.Application.GraphQL;
 
@@ -13,8 +15,10 @@ public class Mutation
         [Service] IMessageService messageService,
         CreateMessageDto request, 
         [Service] ITopicEventSender eventSender, 
-        Guid? groupId)
+        [Service] IHttpContextAccessor httpContextAccessor)
     {
-        return await messageService.Create(context, request, eventSender, groupId);
+        var token = httpContextAccessor.HttpContext.Request.Headers["Authorization"][0];
+        
+        return await messageService.Create(context, request, eventSender, token!);
     }
 }

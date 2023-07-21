@@ -5,4 +5,5 @@ namespace Group.Application;
 public interface IGroupRepository
 {
     IEnumerable<Member> GetMembers(Guid groupId);
+    bool CheckMember(string authorization, Guid groupId);
 }

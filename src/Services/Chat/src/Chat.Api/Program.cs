@@ -33,6 +33,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateIssuer = false
     });
 
+builder.Services.AddHttpClient("group", (provider, client) =>
+{
+    client.BaseAddress = new Uri("https://localhost:7248/");
+});
+
 builder.Services
     .AddGraphQLServer()
     .AddSocketSessionInterceptor<SocketSessionInterceptor>()
@@ -43,6 +48,8 @@ builder.Services
     .AddSubscriptionType<Subscription>()
     .AddAuthorization()
     .AddInMemorySubscriptions();
+
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

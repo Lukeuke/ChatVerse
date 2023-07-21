@@ -8,9 +8,20 @@ namespace Chat.Application.Services;
 
 public class MessageService : IMessageService
 {
-    public async Task<bool> Create(ChatDbContext context, CreateMessageDto request, [Service] ITopicEventSender eventSender, Guid? groupId)
+    private readonly IHttpClientFactory _clientFactory;
+
+    public MessageService(IHttpClientFactory clientFactory)
     {
-        if (groupId.HasValue && !IsUserInGroup(request.SenderId, groupId.Value))
+        _clientFactory = clientFactory;
+    }
+    
+    public async Task<bool> Create(
+        ChatDbContext context, 
+        CreateMessageDto request, 
+        [Service] ITopicEventSender eventSender,
+        string token)
+    {
+        if (!await IsUserInGroup(request.GroupId, token))
         {
             return false;
         }
@@ -30,9 +41,20 @@ public class MessageService : IMessageService
         return true;
     }
 
-    private bool IsUserInGroup(string requestSenderId, Guid groupId)
+    private async Task<bool> IsUserInGroup(Guid groupId, string token)
     {
-        // TODO: Check if user is in group from Group Service through RabbitMQ
-        return true;
+        var client = _clientFactory.CreateClient("group");
+        client.DefaultRequestHeaders.Add("Authorization", token);
+
+        Console.WriteLine(client.BaseAddress);
+        
+        var result = await client.GetAsync($"group/{groupId}/has_member");
+
+        if (result.IsSuccessStatusCode)
+        {
+            return bool.Parse(await result.Content.ReadAsStringAsync());
+        }
+
+        return false;
     }
 }

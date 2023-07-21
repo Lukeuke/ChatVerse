@@ -6,5 +6,5 @@ namespace Chat.Application.Services;
 
 public interface IMessageService
 {
-    Task<bool> Create(ChatDbContext context,CreateMessageDto request, [Service] ITopicEventSender eventSender, Guid? groupId);
+    Task<bool> Create(ChatDbContext context,CreateMessageDto request, [Service] ITopicEventSender eventSender, string token);
 }
