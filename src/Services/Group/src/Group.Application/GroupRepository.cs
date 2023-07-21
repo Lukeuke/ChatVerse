@@ -52,6 +52,25 @@ public class GroupRepository : IGroupRepository
         };
     }
 
+    public async Task<(bool, object)> AddUserToGroup(string authorization, Guid userId, Guid groupId)
+    {
+        var ownerId = ParseTokenIntoUserId(authorization);
+
+        var group = _context.Groups.FirstOrDefault(x => x.Id == groupId);
+
+        if (group == null || group.OwnerId != ownerId) return (false, new {Message = "Only group owners can add users."});
+        
+        _context.Members.Add(new Member
+        {
+            GroupId = groupId,
+            MemberId = userId
+        });
+
+        await _context.SaveChangesAsync();
+
+        return (true, new { Message = "User was added to the group." });
+    }
+
     private static Guid ParseTokenIntoUserId(string authorization)
     {
         var token = authorization.Split(" ")[1];

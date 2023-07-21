@@ -48,4 +48,7 @@ app.MapPut("/group", async (CreateGroupRequestDto createGroupRequestDto, IGroupR
     return TypedResults.Created($"/group/{model.Id}", model);
 }).RequireAuthorization();
 
+app.MapPost("/group/{groupId:guid}", async (Guid groupId, AddToGroupRequestDto request, IGroupRepository groupRepository, [FromHeader] string authorization) => 
+    await groupRepository.AddUserToGroup(authorization, request.UserId, groupId)).RequireAuthorization();
+
 app.Run();

@@ -18,13 +18,11 @@
     <projectFile profileName="https">src/Services/Identity/src/Identity.Api/Identity.Api.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f074126-9ff2-4f58-a50f-0b9006b5cf46" name="Changes" comment="Checking if Member is in the Group before sending the Message">
+    <list default="true" id="1f074126-9ff2-4f58-a50f-0b9006b5cf46" name="Changes" comment="Creating Groups in ``Group Service``">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/GroupRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/GroupRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/IGroupRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/IGroupRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Data/GroupDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Data/GroupDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Migrations/GroupDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Migrations/GroupDbContextModelSnapshot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -301,7 +299,7 @@
       <updated>1689778957099</updated>
       <workItem from="1689778963083" duration="6746000" />
       <workItem from="1689800108217" duration="723000" />
-      <workItem from="1689934714822" duration="12305000" />
+      <workItem from="1689934714822" duration="13306000" />
     </task>
     <task id="LOCAL-00001" summary="+ Authorization in GraphQL">
       <created>1689783414960</created>
@@ -345,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689945513998</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Creating Groups in ``Group Service``">
+      <created>1689947529027</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1689947529027</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,7 +374,8 @@
     <MESSAGE value="+ Authorization in GraphQL" />
     <MESSAGE value="Socket interceptor" />
     <MESSAGE value="Checking if Member is in the Group before sending the Message" />
-    <option name="LAST_COMMIT_MESSAGE" value="Checking if Member is in the Group before sending the Message" />
+    <MESSAGE value="Creating Groups in ``Group Service``" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating Groups in ``Group Service``" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
