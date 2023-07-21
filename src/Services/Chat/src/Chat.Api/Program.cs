@@ -1,5 +1,6 @@
 using System.Text;
 using Chat.Application.GraphQL;
+using Chat.Application.Interceptors;
 using Chat.Application.Services;
 using Chat.Application.Types;
 using Chat.Domain.Data;
@@ -34,6 +35,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 builder.Services
     .AddGraphQLServer()
+    .AddSocketSessionInterceptor<SocketSessionInterceptor>()
     .AddQueryType<Query>()
     .AddType<GroupType>()
     .AddType<MessageType>()
@@ -46,11 +48,11 @@ var app = builder.Build();
 
 app.UseWebSockets();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapGraphQL("/graphql");
 
 app.MapGet("/", () => "Hello World!").RequireAuthorization();
-
-app.UseAuthentication();
-app.UseAuthorization();
 
 app.Run();

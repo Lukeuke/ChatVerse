@@ -5,7 +5,7 @@ namespace Chat.Application.GraphQL;
 
 public class Subscription
 {
-    [Authorize]
+    //[Authorize]
     [Subscribe]
     public Message? MessageCreated([EventMessage] Message message, string? groupId) 
     {

@@ -18,70 +18,19 @@
     <projectFile profileName="https">src/Services/Identity/src/Identity.Api/Identity.Api.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f074126-9ff2-4f58-a50f-0b9006b5cf46" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Authentication/CustomAuthenticationStateProvider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Domain/DTOs/MessageResponseDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Domain/DTOs/RegisterUserDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Domain/DTOs/SignInRequestDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Domain/DTOs/SignInResponseDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Models/Settings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ChatVerse/DesignTimeBuild/.dtbcache.v2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ChatVerse/v17/.futdcache.v2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ChatVerse/v17/.suo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/chatverse.metadata.v5.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/chatverse.projects.v5.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChatVerse.sln" beforeDir="false" afterPath="$PROJECT_DIR$/ChatVerse.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Web.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Web.Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Domain/Web.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Domain/Web.Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/.dockerignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/App.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Data/WeatherForecast.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Data/WeatherForecastService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/Counter.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/Error.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/Error.cshtml.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/FetchData.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/Index.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/_Host.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/_Layout.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Properties/launchSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Shared/MainLayout.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Shared/MainLayout.razor.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Shared/NavMenu.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Shared/NavMenu.razor.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Shared/SurveyPrompt.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Web.Presentation.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/_Imports.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/appsettings.Development.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/appsettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/bootstrap/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/bootstrap/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/open-iconic/FONT-LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/open-iconic/ICON-LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/open-iconic/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/open-iconic/font/fonts/open-iconic.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/open-iconic/font/fonts/open-iconic.otf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/open-iconic/font/fonts/open-iconic.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/open-iconic/font/fonts/open-iconic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/site.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Chat.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Chat.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Mutation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Mutation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Query.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Query.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Subscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Subscription.cs" afterDir="false" />
+    <list default="true" id="1f074126-9ff2-4f58-a50f-0b9006b5cf46" name="Changes" comment="Socket interceptor">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Interceptors/SocketSessionInterceptor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Interceptors/SocketSessionInterceptor.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/448cdf13818fe2172c49547ae6ce4a206296992a79d77efecbc12e3299594a/ConnectionCloseReason.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/de4a75c4cd2d982cdd0a09248dc49402232cc6ba546295ca4be9462a5fdb6/AuthorizeAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f1dc519e6d6e2dc1ad8346bf67555aff5e81a3b67f52bf2cc820df26c59ee89/ConnectionStatus.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -92,14 +41,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Chat.Api: https">
     <configuration name="BlazorApp1: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Clients/Web/src/BlazorApp1/BlazorApp1.csproj" />
@@ -335,8 +284,39 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1689778957099</updated>
-      <workItem from="1689778963083" duration="4374000" />
+      <workItem from="1689778963083" duration="6746000" />
+      <workItem from="1689800108217" duration="723000" />
+      <workItem from="1689934714822" duration="4848000" />
     </task>
+    <task id="LOCAL-00001" summary="+ Authorization in GraphQL">
+      <created>1689783414960</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1689783414960</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Socket interceptor">
+      <created>1689939170359</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1689939170359</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Socket interceptor">
+      <created>1689939187176</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1689939187176</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Socket interceptor">
+      <created>1689939199355</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689939199355</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,5 +337,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="+ Authorization in GraphQL" />
+    <MESSAGE value="Socket interceptor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Socket interceptor" />
   </component>
 </project>
