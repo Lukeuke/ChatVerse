@@ -18,18 +18,13 @@
     <projectFile profileName="https">src/Services/Identity/src/Identity.Api/Identity.Api.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f074126-9ff2-4f58-a50f-0b9006b5cf46" name="Changes" comment="Socket interceptor">
+    <list default="true" id="1f074126-9ff2-4f58-a50f-0b9006b5cf46" name="Changes" comment="Checking if Member is in the Group before sending the Message">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Mutation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Mutation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/IMessageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/IMessageService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/MessageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/MessageService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Group.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Group.Api.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/Group.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/Group.Application.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/GroupRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/GroupRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/IGroupRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/IGroupRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Data/GroupDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Data/GroupDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Migrations/GroupDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Migrations/GroupDbContextModelSnapshot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +40,11 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9a22345af3778e6d675cfffd869c9619291a38b3e0b87e8cd28c4cc8f480db21/DefaultInterpolatedStringHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/de4a75c4cd2d982cdd0a09248dc49402232cc6ba546295ca4be9462a5fdb6/AuthorizeAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f1dc519e6d6e2dc1ad8346bf67555aff5e81a3b67f52bf2cc820df26c59ee89/ConnectionStatus.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/lukas/RiderProjects/ChatVerse/src/Services/Chat/src/Chat.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/lukas/RiderProjects/ChatVerse/src/Services/Chat/src/Chat.Application/GraphQL/Mutation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/lukas/RiderProjects/ChatVerse/src/Services/Group/src/Group.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/lukas/RiderProjects/ChatVerse/src/Services/Group/src/Group.Application/GroupRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/lukas/RiderProjects/ChatVerse/src/Services/Group/src/Group.Application/IGroupRepository.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -55,14 +55,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Group.Api: https">
     <configuration name="BlazorApp1: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Clients/Web/src/BlazorApp1/BlazorApp1.csproj" />
@@ -300,7 +301,7 @@
       <updated>1689778957099</updated>
       <workItem from="1689778963083" duration="6746000" />
       <workItem from="1689800108217" duration="723000" />
-      <workItem from="1689934714822" duration="10245000" />
+      <workItem from="1689934714822" duration="12305000" />
     </task>
     <task id="LOCAL-00001" summary="+ Authorization in GraphQL">
       <created>1689783414960</created>
@@ -337,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689939779858</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Checking if Member is in the Group before sending the Message">
+      <created>1689945513998</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689945513998</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -360,49 +368,24 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="+ Authorization in GraphQL" />
     <MESSAGE value="Socket interceptor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Socket interceptor" />
+    <MESSAGE value="Checking if Member is in the Group before sending the Message" />
+    <option name="LAST_COMMIT_MESSAGE" value="Checking if Member is in the Group before sending the Message" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/src/Services/Group/src/Group.Application/GroupRepository.cs</url>
-          <line>30</line>
-          <properties documentPath="C:\Users\lukas\RiderProjects\ChatVerse\src\Services\Group\src\Group.Application\GroupRepository.cs" initialLine="30" containingFunctionPresentation="method 'CheckMember'">
-            <startOffsets>
-              <option value="774" />
-            </startOffsets>
-            <endOffsets>
-              <option value="846" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/MessageService.cs</url>
           <line>23</line>
-          <properties documentPath="C:\Users\lukas\RiderProjects\ChatVerse\src\Services\Chat\src\Chat.Application\Services\MessageService.cs" initialLine="24" containingFunctionPresentation="method 'Create'">
+          <properties documentPath="C:\Users\lukas\RiderProjects\ChatVerse\src\Services\Group\src\Group.Application\GroupRepository.cs" initialLine="23" containingFunctionPresentation="method 'CheckMember'">
             <startOffsets>
-              <option value="589" />
+              <option value="553" />
             </startOffsets>
             <endOffsets>
-              <option value="638" />
+              <option value="680" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/MessageService.cs</url>
-          <line>52</line>
-          <properties documentPath="C:\Users\lukas\RiderProjects\ChatVerse\src\Services\Chat\src\Chat.Application\Services\MessageService.cs" initialLine="52" containingFunctionPresentation="method 'IsUserInGroup'">
-            <startOffsets>
-              <option value="1437" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1468" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="21" />
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

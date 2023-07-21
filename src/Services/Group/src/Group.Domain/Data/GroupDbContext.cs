@@ -13,4 +13,5 @@ public class GroupDbContext : DbContext
 
     
     public DbSet<Member> Members { get; set; }
+    public DbSet<Models.Group> Groups { get; set; }
 }

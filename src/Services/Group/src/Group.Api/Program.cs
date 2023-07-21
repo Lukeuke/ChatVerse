@@ -2,6 +2,7 @@ using System.Text;
 using Chat.Domain.Models;
 using Group.Application;
 using Group.Domain.Data;
+using Group.Domain.DTOs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -40,5 +41,11 @@ app.MapGet("/group/{id:guid}", (Guid id, IGroupRepository groupRepository) => gr
 app.MapGet("/group/{groupId:guid}/has_member", (Guid groupId, IGroupRepository groupRepository, [FromHeader] string authorization) => groupRepository
     .CheckMember(authorization, groupId))
     .RequireAuthorization();
+
+app.MapPut("/group", async (CreateGroupRequestDto createGroupRequestDto, IGroupRepository groupRepository, [FromHeader] string authorization) =>
+{
+    var model = await groupRepository.Create(authorization, createGroupRequestDto);
+    return TypedResults.Created($"/group/{model.Id}", model);
+}).RequireAuthorization();
 
 app.Run();
