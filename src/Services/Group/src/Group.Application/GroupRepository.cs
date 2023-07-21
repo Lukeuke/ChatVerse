@@ -13,7 +13,9 @@ public class GroupRepository : IGroupRepository
     {
         _context = context;
     }
-    
+
+    public IEnumerable<Domain.Models.Group> GetAll() => _context.Groups.AsEnumerable();
+
     public IEnumerable<Member> GetMembers(Guid groupId)
     {
         return _context.Members.Where(x => x.GroupId == groupId);

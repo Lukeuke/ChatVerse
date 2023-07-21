@@ -13,12 +13,7 @@ public class ChatDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Message>(eb =>
-        {
-            eb.HasOne(x => x.Group);
-        });
     }
 
     public DbSet<Message> Messages { get; set; }
-    public DbSet<Group> Groups { get; set; }
 }

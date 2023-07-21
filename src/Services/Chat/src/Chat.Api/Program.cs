@@ -17,7 +17,6 @@ builder.Services.AddDbContext<ChatDbContext>(o =>
 });
 
 builder.Services.AddScoped<IMessageService, MessageService>();
-builder.Services.AddScoped<IGroupService, GroupService>();
 
 var settings = new Settings();
 builder.Configuration.Bind("Settings", settings);
@@ -42,7 +41,6 @@ builder.Services
     .AddGraphQLServer()
     .AddSocketSessionInterceptor<SocketSessionInterceptor>()
     .AddQueryType<Query>()
-    .AddType<GroupType>()
     .AddType<MessageType>()
     .AddMutationType<Mutation>()
     .AddSubscriptionType<Subscription>()
