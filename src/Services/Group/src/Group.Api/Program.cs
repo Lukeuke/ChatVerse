@@ -38,6 +38,9 @@ app.UseAuthorization();
 
 app.MapGet("/group/{id:guid}", (Guid id, IGroupRepository groupRepository) => groupRepository.GetMembers(id)).RequireAuthorization();
 
+app.MapGet("/groups/me", ([FromHeader] string authorization, IGroupRepository groupRepository) => 
+    groupRepository.GetAllForUser(authorization)).RequireAuthorization();
+
 app.MapGet("/group/{groupId:guid}/has_member", (Guid groupId, IGroupRepository groupRepository, [FromHeader] string authorization) => groupRepository
     .CheckMember(authorization, groupId))
     .RequireAuthorization();
@@ -48,7 +51,30 @@ app.MapPut("/group", async (CreateGroupRequestDto createGroupRequestDto, IGroupR
     return TypedResults.Created($"/group/{model.Id}", model);
 }).RequireAuthorization();
 
-app.MapPost("/group/{groupId:guid}", async (Guid groupId, AddToGroupRequestDto request, IGroupRepository groupRepository, [FromHeader] string authorization) => 
-    await groupRepository.AddUserToGroup(authorization, request.UserId, groupId)).RequireAuthorization();
+app.MapPost("/group/{groupId:guid}", async (Guid groupId, [FromBody] AddToGroupRequestDto request, IGroupRepository groupRepository, [FromHeader] string authorization) =>
+{
+    var (success, content) = await groupRepository.AddUserToGroup(authorization, request.UserId, groupId);
+    
+    if (success)
+    {
+        return Results.Ok(content);
+    }
+
+    return Results.BadRequest(content);
+    
+}).RequireAuthorization();
+
+app.MapDelete("/group/{groupId:guid}", async (Guid groupId, [FromBody] AddToGroupRequestDto request,
+    IGroupRepository groupRepository, [FromHeader] string authorization) =>
+{
+    var (success, content) = await groupRepository.DeleteUserFromGroup(authorization, request.UserId, groupId);
+
+    if (success)
+    {
+        return Results.NoContent();
+    }
+
+    return Results.BadRequest(content);
+}).RequireAuthorization();
 
 app.Run();

@@ -11,7 +11,11 @@ public class GroupDbContext : DbContext
         
     }
 
-    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Member>().HasMany(x => x.Groups).WithMany(x => x.Members);
+    }
+
     public DbSet<Member> Members { get; set; }
     public DbSet<Models.Group> Groups { get; set; }
 }

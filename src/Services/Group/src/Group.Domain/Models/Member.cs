@@ -5,8 +5,7 @@ namespace Group.Domain.Models;
 public class Member
 {
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     
-    public Guid MemberId { get; set; }
-    public Guid GroupId { get; set; }
+    public List<Group> Groups { get; set; } = new();
 }

@@ -2,6 +2,7 @@
 using Group.Domain.Data;
 using Group.Domain.DTOs;
 using Group.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Group.Application;
 
@@ -15,34 +16,49 @@ public class GroupRepository : IGroupRepository
     }
 
     public IEnumerable<Domain.Models.Group> GetAll() => _context.Groups.AsEnumerable();
+    public IEnumerable<Domain.Models.Group> GetAllForUser(string authorization)
+    {
+        return _context.Groups.Where(x => x.Members.Any(x => x.Id == ParseTokenIntoUserId(authorization)));
+    }
 
     public IEnumerable<Member> GetMembers(Guid groupId)
     {
-        return _context.Members.Where(x => x.GroupId == groupId);
+        return _context.Groups.Include(x => x.Members).First(x => x.Id == groupId).Members;
     }
 
     public bool CheckMember(string authorization, Guid groupId)
     {
-        return _context.Members.Where(x => x.MemberId == ParseTokenIntoUserId(authorization)).Select(x => x.GroupId).Contains(groupId);
+        return _context.Groups.Include(x => x.Members)
+            .First(x => x.Id == groupId)
+            .Members
+            .Any(x => x.Id == ParseTokenIntoUserId(authorization));
     }
 
     public async Task<CreateGroupResponseDto> Create(string authorization, CreateGroupRequestDto request)
     {
         var groupId = Guid.NewGuid();
         var ownerId = ParseTokenIntoUserId(authorization);
-        
-        _context.Groups.Add(new Domain.Models.Group
+        var group = new Domain.Models.Group
         {
             Id = groupId,
             Name = request.Name,
-            OwnerId = ownerId
-        });
+            OwnerId = ownerId,
+        };
+        
+        _context.Groups.Add(group);
 
-        _context.Members.Add(new Member
+        var member = _context.Members.FirstOrDefault(x => x.Id == ownerId);
+        
+        if (member is null)
         {
-            GroupId = groupId,
-            MemberId = ownerId
-        });
+            member = new Member
+            {
+                Id = ownerId,
+            };
+            _context.Members.Add(member);
+        }
+        
+        member.Groups.Add(group);
 
         await _context.SaveChangesAsync();
 
@@ -61,16 +77,49 @@ public class GroupRepository : IGroupRepository
         var group = _context.Groups.FirstOrDefault(x => x.Id == groupId);
 
         if (group == null || group.OwnerId != ownerId) return (false, new {Message = "Only group owners can add users."});
-        
-        _context.Members.Add(new Member
+
+        var member = _context.Members.FirstOrDefault(x => x.Id == userId);
+
+        if (member is null)
         {
-            GroupId = groupId,
-            MemberId = userId
-        });
+            _context.Members.Add(new Member
+            {
+                Id = userId
+            });
+            
+            await _context.SaveChangesAsync();
+            member = _context.Members.First(x => x.Id == userId);
+        }
+        
+        member!.Groups.Add(group);
+        
+        group.Members.Add(member);
 
         await _context.SaveChangesAsync();
 
         return (true, new { Message = "User was added to the group." });
+    }
+
+    public async Task<(bool, object)> DeleteUserFromGroup(string authorization, Guid userId, Guid groupId)
+    {
+        var ownerId = ParseTokenIntoUserId(authorization);
+        
+        var group = _context.Groups.FirstOrDefault(x => x.Id == groupId);
+
+        if (group == null || group.OwnerId != ownerId) return (false, new {Message = "Only group owners can add users."});
+
+        var member = _context.Members.Include(x => x.Groups).FirstOrDefault(x => x.Id == userId);
+
+        if (member is null)
+        {
+            return (false, new { Message = "Member is not in the group." });
+        }
+
+        member.Groups.Remove(group);
+
+        await _context.SaveChangesAsync();
+
+        return (true, new { Messsage = "User was deleted from the group" });
     }
 
     private static Guid ParseTokenIntoUserId(string authorization)

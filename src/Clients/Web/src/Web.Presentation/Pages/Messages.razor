@@ -1,0 +1,32 @@
+﻿@attribute [Authorize]
+@page "/Messages"
+@using Web.Application.Repositories.Chat
+@using Web.Domain.Models.Chat
+@inject IChatRepository ChatRepository
+
+@if (Chats is null)
+{
+    <div>
+        Loading...
+    </div>
+}
+else
+{
+    foreach (var chatModel in Chats)
+    {
+        <div>@chatModel.Name</div>
+    }
+}
+
+@code {
+    private List<ChatNameIdModel>? Chats { get; set; } = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var jwt = await LocalStorage.GetItemAsStringAsync("token");
+
+        var chats = await ChatRepository.GetChats(jwt.Replace("\"", ""));
+
+        Chats = chats.ToList();
+    }
+}

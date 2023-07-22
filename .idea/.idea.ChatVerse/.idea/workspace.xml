@@ -16,26 +16,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b0d69a9-2ee2-415a-bb03-954b7367a08f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Data/WeatherForecast.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Data/WeatherForecastService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/Error.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/Error.cshtml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/_Host.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Repositories/Chat/ChatRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Repositories/Chat/IChatRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Domain/Models/Chat/ChatNameIdModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/Messages.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Migrations/20230722104944_ChangedPK.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Models/GroupMember.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChatVerse.sln" beforeDir="false" afterPath="$PROJECT_DIR$/ChatVerse.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Repositories/Identity/IdentityRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Repositories/Identity/IdentityRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/FetchData.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/FetchData.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/Index.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Web.Presentation.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Web.Presentation.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/_Imports.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/icon-192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/sample-data/weather.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/GroupRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/GroupRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/IGroupRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Application/IGroupRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Data/GroupDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Data/GroupDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Group.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Group.Domain.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Migrations/20230716091759_Initial.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Migrations/20230716091759_Initial.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Migrations/20230721134709_GroupTable.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Migrations/20230722104944_ChangedPK.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Migrations/20230721134709_GroupTable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Migrations/GroupDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Migrations/GroupDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Models/Group.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Models/Group.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Models/Member.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Domain/Models/Member.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +44,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/126693d9e74b4f199d3b9f5ddfb200af688b0/85/677e08ed/RequestDelegateFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7b3b6985aad11c5d633d75b545f5f5f4fc7e50918ad1cb9f6b615682f5bfb76d/SingleQueryingEnumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/OneDrive/Pulpit/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -69,7 +72,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.Identity.Api: http">
+  <component name="RunManager" selected=".NET Launch Settings Profile.Group.Api: https">
     <configuration name="Chat.Api: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Chat.Api.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
@@ -261,7 +264,8 @@
       <updated>1689957031458</updated>
       <workItem from="1689957050378" duration="2992000" />
       <workItem from="1689960165463" duration="1975000" />
-      <workItem from="1689965802661" duration="2187000" />
+      <workItem from="1689965802661" duration="6513000" />
+      <workItem from="1690021990308" duration="2675000" />
     </task>
     <task id="LOCAL-00001" summary="Added Blazor WASM as Front-end, named ``Web.Presentation``">
       <created>1689958492791</created>
@@ -270,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689958492791</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Changed Blazor WASM to Server">
+      <created>1689974833721</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1689974833721</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,15 +304,16 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Added Blazor WASM as Front-end, named ``Web.Presentation``" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Blazor WASM as Front-end, named ``Web.Presentation``" />
+    <MESSAGE value="Changed Blazor WASM to Server" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed Blazor WASM to Server" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/SignIn.razor</url>
-          <line>43</line>
-          <properties documentPath="C:\Users\lukas\RiderProjects\ChatVerse\src\Clients\Web\src\Web.Presentation\Pages\SignIn.razor" initialLine="43" isMultiMethodBreakpoint="true">
+          <url>file://$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/Messages.razor</url>
+          <line>27</line>
+          <properties documentPath="C:\Users\lukas\RiderProjects\ChatVerse\src\Clients\Web\src\Web.Presentation\Pages\Messages.razor" initialLine="27" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
             <startOffsets>
               <option value="-1" />
@@ -310,33 +322,59 @@
               <option value="-1" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Repositories/Identity/IdentityRepository.cs</url>
-          <line>17</line>
-          <properties documentPath="C:\Users\lukas\RiderProjects\ChatVerse\src\Clients\Web\src\Web.Application\Repositories\Identity\IdentityRepository.cs" initialLine="17" containingFunctionPresentation="method 'RegisterUser'">
+          <url>file://$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Repositories/Chat/ChatRepository.cs</url>
+          <line>18</line>
+          <properties documentPath="C:\Users\lukas\RiderProjects\ChatVerse\src\Clients\Web\src\Web.Application\Repositories\Chat\ChatRepository.cs" initialLine="18" containingFunctionPresentation="method 'GetChats'">
             <startOffsets>
-              <option value="439" />
+              <option value="497" />
             </startOffsets>
             <endOffsets>
-              <option value="492" />
+              <option value="591" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Repositories/Identity/IdentityRepository.cs</url>
-          <line>41</line>
-          <properties documentPath="C:\Users\lukas\RiderProjects\ChatVerse\src\Clients\Web\src\Web.Application\Repositories\Identity\IdentityRepository.cs" initialLine="41" containingFunctionPresentation="method 'LoginUser'">
+          <url>file://$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Repositories/Chat/ChatRepository.cs</url>
+          <line>20</line>
+          <properties documentPath="C:\Users\lukas\RiderProjects\ChatVerse\src\Clients\Web\src\Web.Application\Repositories\Chat\ChatRepository.cs" initialLine="23" containingFunctionPresentation="method 'GetChats'">
             <startOffsets>
-              <option value="1359" />
+              <option value="601" />
             </startOffsets>
             <endOffsets>
-              <option value="1412" />
+              <option value="662" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/src/Services/Group/src/Group.Application/GroupRepository.cs</url>
+          <line>30</line>
+          <properties documentPath="C:\Users\lukas\RiderProjects\ChatVerse\src\Services\Group\src\Group.Application\GroupRepository.cs" initialLine="31" containingFunctionPresentation="method 'CheckMember'">
+            <startOffsets>
+              <option value="901" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1077" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/src/Services/Group/src/Group.Application/GroupRepository.cs</url>
+          <line>74</line>
+          <properties documentPath="C:\Users\lukas\RiderProjects\ChatVerse\src\Services\Group\src\Group.Application\GroupRepository.cs" initialLine="75" containingFunctionPresentation="method 'AddUserToGroup'">
+            <startOffsets>
+              <option value="2122" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2172" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

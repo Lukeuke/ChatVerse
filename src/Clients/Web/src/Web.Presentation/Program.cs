@@ -1,6 +1,7 @@
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using Web.Application.Authentication;
+using Web.Application.Repositories.Chat;
 using Web.Application.Repositories.Identity;
 using Web.Presentation.Data;
 
@@ -15,8 +16,14 @@ builder.Services.AddHttpClient("identity", client =>
     client.BaseAddress = new Uri("http://localhost:5222");
 });
 
+builder.Services.AddHttpClient("group", client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5008");
+});
+
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddScoped<IIdentityRepository, IdentityRepository>();
+builder.Services.AddScoped<IChatRepository, ChatRepository>();
 
 builder.Services.AddAuthorizationCore();
 builder.Services.AddBlazoredLocalStorage();
