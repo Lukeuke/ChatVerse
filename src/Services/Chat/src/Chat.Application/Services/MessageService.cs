@@ -1,4 +1,5 @@
-﻿using Chat.Application.GraphQL;
+﻿using System.Text.Json;
+using Chat.Application.GraphQL;
 using Chat.Domain.Data;
 using Chat.Domain.DTOs;
 using Chat.Domain.Helpers.Authorization;
@@ -26,13 +27,16 @@ public class MessageService : IMessageService
         {
             return false;
         }
+
+        var user = await GetUser(token);
         
         var message = new Message
         {
             Id = Guid.NewGuid(),
             Content = request.Content,
             SenderId = JwtHelper.ParseTokenIntoUserId(token).ToString(),
-            GroupId = request.GroupId
+            GroupId = request.GroupId,
+            SenderFullName = user.Username
         };
 
         context.Messages.Add(message);
@@ -42,6 +46,18 @@ public class MessageService : IMessageService
         return true;
     }
 
+    private async Task<User> GetUser(string token)
+    {
+        var client = _clientFactory.CreateClient("identity");
+        client.DefaultRequestHeaders.Add("Authorization", token);
+        
+        var result = await client.GetAsync("auth/user");
+
+        var stream = await result.Content.ReadAsStreamAsync();
+        
+        return JsonSerializer.Deserialize<User>(stream)!;
+    }
+    
     private async Task<bool> IsUserInGroup(Guid groupId, string token)
     {
         var client = _clientFactory.CreateClient("group");

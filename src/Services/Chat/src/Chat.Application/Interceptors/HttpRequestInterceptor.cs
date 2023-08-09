@@ -1,27 +1,36 @@
-﻿using System.Security.Claims;
-using HotChocolate.AspNetCore;
+﻿using HotChocolate.AspNetCore;
 using HotChocolate.Execution;
 using Microsoft.AspNetCore.Http;
+using JwtValidator = Chat.Domain.Helpers.Authorization.JwtValidator;
 
 namespace Chat.Application.Interceptors;
 
 public class HttpRequestInterceptor : DefaultHttpRequestInterceptor
 {
-    public override ValueTask OnCreateAsync(HttpContext context,
-        IRequestExecutor requestExecutor, IQueryRequestBuilder requestBuilder,
+    public override async ValueTask OnCreateAsync(
+        HttpContext context,
+        IRequestExecutor requestExecutor,
+        IQueryRequestBuilder requestBuilder,
         CancellationToken cancellationToken)
     {
-        var identity = new ClaimsIdentity();
-        identity.AddClaim(new Claim(ClaimTypes.Country, "pl"));
-
-        foreach (var userClaim in context.User.Claims)
+        if (context.Request.Headers.TryGetValue("Authorization", out var authHeader))
         {
-            Console.WriteLine(userClaim.Type);
-        }
-        
-        context.User.AddIdentity(identity);
+            var jwt = authHeader.ToString().Split(" ")[1];
 
-        return base.OnCreateAsync(context, requestExecutor, requestBuilder,
-            cancellationToken);
+            if (!JwtValidator.Validate(jwt))
+            {
+                context.Response.StatusCode = 401;
+                context.Response.Headers.Clear();
+                await context.Response.WriteAsync("Unauthorized", cancellationToken);
+            }
+        }
+        else
+        {
+            context.Response.StatusCode = 401;
+            context.Response.Headers.Clear();
+            await context.Response.WriteAsync("Unauthorized", cancellationToken);
+        }
+
+        await base.OnCreateAsync(context, requestExecutor, requestBuilder, cancellationToken);
     }
 }

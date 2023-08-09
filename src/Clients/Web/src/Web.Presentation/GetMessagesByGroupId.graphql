@@ -1,0 +1,8 @@
+﻿query GetMessagesByGroupId($groupId: UUID!){
+    messagesByGroupId(groupId: $groupId){
+        nodes {
+            content,
+            senderFullName
+        }
+    }
+}

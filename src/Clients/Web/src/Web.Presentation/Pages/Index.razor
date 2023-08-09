@@ -1,4 +1,10 @@
 ﻿@page "/"
+@using System.Net.Http.Headers
+@using Microsoft.AspNetCore.Authentication.JwtBearer
+@using Web.Application.Helpers
+@inject CryptoClient CryptoClient
+@inject IHttpClientFactory ClientFactory
+
 @attribute [Authorize]
 
 <PageTitle>Welcome</PageTitle>
@@ -10,15 +16,41 @@
         <h1>Hello, @Username!</h1>
 
         <a @onclick='() => {NavigationManager.NavigateTo("messages"); }'>Get your messagess</a>
+        
+        @if (Expired)
+        {
+            <div class="session-expired">
+                <div class="session-expired-bg"></div>
+                <div class="session-round">
+                    <div>
+                        Session has expired.
+                    </div>
+                    <div>
+                        <button @onclick='NavigateToLogin'>Click to Login</button>
+                    </div>
+                </div>
+            </div>
+        }
     </Authorized>
 </AuthorizeView>
 
 @code {
-    private string Username { get; set; } = null!;
-
+    private string? Username { get; set; }
+    private bool Expired { get; set; } = false;
+    
     protected override async Task<Task> OnInitializedAsync()
     {
         await GetUsername();
+
+        var token = await LocalStorage.GetItemAsStringAsync("token");
+
+        token = token.Replace("\"", "");
+
+        if (!token.ValidateJwt())
+        {
+            Expired = true;
+        }
+        
         return base.OnInitializedAsync();
     }
 
@@ -27,4 +59,10 @@
         Username = await LocalStorage.GetItemAsStringAsync("username");
     }
 
+    private async Task NavigateToLogin()
+    {
+        await LocalStorage.RemoveItemsAsync(new []{"username", "token"});
+        NavigationManager.NavigateTo("sign-in");
+        StateHasChanged();
+    }
 }

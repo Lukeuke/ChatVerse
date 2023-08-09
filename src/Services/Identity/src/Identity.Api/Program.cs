@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using Identity.Application.Helpers;
 using Identity.Application.Repositories;
 using Identity.Domain.Data;
@@ -62,6 +63,17 @@ app.MapPost("/auth", (LoginUserRequestDto request, [FromServices] IdentityDbCont
         Token = token,
         Expires = DateTimeOffset.Now.AddDays(7).ToUnixTimeSeconds()
     });
+});
+
+app.MapGet("/auth/user", ([FromServices] IUserRepository userRepo, [FromHeader] string authorization) =>
+{
+    var jwt = authorization.Split(" ")[1];
+    var jwtPayload = JwtPayload.Deserialize(jwt);
+
+    var id = jwtPayload.GetValueOrDefault("id");
+    var user = userRepo.Get((Guid)id);
+
+    return user;
 });
 
 app.Run();

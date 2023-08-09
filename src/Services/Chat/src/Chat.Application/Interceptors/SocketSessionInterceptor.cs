@@ -1,4 +1,4 @@
-﻿using Chat.Application.Helpers.Authorization;
+﻿using Chat.Domain.Helpers.Authorization;
 using HotChocolate.AspNetCore;
 using HotChocolate.AspNetCore.Subscriptions;
 using HotChocolate.AspNetCore.Subscriptions.Protocols;

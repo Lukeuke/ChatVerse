@@ -37,9 +37,15 @@ builder.Services.AddHttpClient("group", (provider, client) =>
     client.BaseAddress = new Uri("https://localhost:7248/");
 });
 
+builder.Services.AddHttpClient("identity", (provider, client) =>
+{
+    client.BaseAddress = new Uri("http://localhost:5222/");
+});
+
 builder.Services
     .AddGraphQLServer()
     .AddSocketSessionInterceptor<SocketSessionInterceptor>()
+    //.AddHttpRequestInterceptor<HttpRequestInterceptor>()
     .AddQueryType<Query>()
     .AddType<MessageType>()
     .AddMutationType<Mutation>()

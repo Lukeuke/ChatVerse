@@ -1,0 +1,7 @@
+﻿query GetMessages{
+    messages{
+        nodes {
+            content
+        }
+    }
+}

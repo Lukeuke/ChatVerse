@@ -1,0 +1,159 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type Message {
+  id: ID
+  senderId: String
+  content: String
+  senderFullName: String
+  groupId: UUID!
+}
+
+enum ApplyPolicy {
+  BEFORE_RESOLVER
+  AFTER_RESOLVER
+  VALIDATION
+}
+
+type Query {
+  messages("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String "Returns the last _n_ elements from the list." last: Int "Returns the elements in the list that come before the specified cursor." before: String where: MessageFilter order_by: MessageSort): MessagesConnection
+  messagesByGroupId(groupId: UUID! "Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String "Returns the last _n_ elements from the list." last: Int "Returns the elements in the list that come before the specified cursor." before: String where: MessageFilter order_by: MessageSort): MessagesByGroupIdConnection
+}
+
+type Mutation {
+  createMessage(request: CreateMessageDtoInput!): Boolean!
+}
+
+type Subscription {
+  messageCreated(groupId: String): Message
+}
+
+scalar UUID
+
+input MessageFilter {
+  AND: [MessageFilter!]
+  OR: [MessageFilter!]
+  id: UUID
+  id_not: UUID
+  id_in: [UUID!]
+  id_not_in: [UUID!]
+  id_gt: UUID
+  id_not_gt: UUID
+  id_gte: UUID
+  id_not_gte: UUID
+  id_lt: UUID
+  id_not_lt: UUID
+  id_lte: UUID
+  id_not_lte: UUID
+  senderId: String
+  senderId_not: String
+  senderId_contains: String
+  senderId_not_contains: String
+  senderId_starts_with: String
+  senderId_not_starts_with: String
+  senderId_ends_with: String
+  senderId_not_ends_with: String
+  senderId_in: [String!]
+  senderId_not_in: [String!]
+  senderFullName: String
+  senderFullName_not: String
+  senderFullName_contains: String
+  senderFullName_not_contains: String
+  senderFullName_starts_with: String
+  senderFullName_not_starts_with: String
+  senderFullName_ends_with: String
+  senderFullName_not_ends_with: String
+  senderFullName_in: [String!]
+  senderFullName_not_in: [String!]
+  content: String
+  content_not: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
+  content_in: [String!]
+  content_not_in: [String!]
+  groupId: UUID
+  groupId_not: UUID
+  groupId_in: [UUID!]
+  groupId_not_in: [UUID!]
+  groupId_gt: UUID
+  groupId_not_gt: UUID
+  groupId_gte: UUID
+  groupId_not_gte: UUID
+  groupId_lt: UUID
+  groupId_not_lt: UUID
+  groupId_lte: UUID
+  groupId_not_lte: UUID
+}
+
+input MessageSort {
+  id: SortOperationKind
+  senderId: SortOperationKind
+  senderFullName: SortOperationKind
+  content: SortOperationKind
+  groupId: SortOperationKind
+}
+
+"A connection to a list of items."
+type MessagesConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+  "A list of edges."
+  edges: [MessagesEdge!]
+  "A flattened list of the nodes."
+  nodes: [Message]
+}
+
+"A connection to a list of items."
+type MessagesByGroupIdConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+  "A list of edges."
+  edges: [MessagesByGroupIdEdge!]
+  "A flattened list of the nodes."
+  nodes: [Message]
+}
+
+enum SortOperationKind {
+  ASC
+  DESC
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+  "Indicates whether more edges exist following the set defined by the clients arguments."
+  hasNextPage: Boolean!
+  "Indicates whether more edges exist prior the set defined by the clients arguments."
+  hasPreviousPage: Boolean!
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+}
+
+"An edge in a connection."
+type MessagesEdge {
+  "A cursor for use in pagination."
+  cursor: String!
+  "The item at the end of the edge."
+  node: Message
+}
+
+"An edge in a connection."
+type MessagesByGroupIdEdge {
+  "A cursor for use in pagination."
+  cursor: String!
+  "The item at the end of the edge."
+  node: Message
+}
+
+input CreateMessageDtoInput {
+  content: String!
+  groupId: UUID!
+}

@@ -1,8 +1,9 @@
 ﻿@attribute [Authorize]
-@page "/Messages"
+@page "/messages/{Id?}"
 @using Web.Application.Repositories.Chat
 @using Web.Domain.Models.Chat
 @inject IChatRepository ChatRepository
+@inject ICryptoClient CryptoClient
 
 @if (Chats is null)
 {
@@ -12,15 +13,44 @@
 }
 else
 {
-    foreach (var chatModel in Chats)
+    if (Id is null)
     {
-        <div>@chatModel.Name</div>
+        foreach (var chatModel in Chats)
+        {
+            <div>
+                <a @onclick='() => NavigationManager.NavigateTo($"messages/{chatModel.Id}")'><div>@chatModel.Name</div></a>
+            </div>
+        }
+    }
+    else
+    {
+        GetMessages();
+        if (MessagesList is null)
+        {
+            <div>
+                Loading...
+            </div>   
+        }
+        else
+        {
+            <div class="bg-black rounded p-2">
+                @foreach (var message in MessagesList)
+                {
+                    <div>@message!.SenderFullName says:</div>
+                    <div>@message.Content</div>
+                }
+            </div>
+        }
     }
 }
 
 @code {
+    [Parameter]
+    public string? Id { get; set; }
+    
     private List<ChatNameIdModel>? Chats { get; set; } = null;
-
+    private List<IGetMessagesByGroupId_MessagesByGroupId_Nodes?>? MessagesList { get; set; }
+    
     protected override async Task OnInitializedAsync()
     {
         var jwt = await LocalStorage.GetItemAsStringAsync("token");
@@ -28,5 +58,12 @@ else
         var chats = await ChatRepository.GetChats(jwt.Replace("\"", ""));
 
         Chats = chats.ToList();
+    }
+
+    private async Task GetMessages()
+    {
+        var executeAsync = await CryptoClient.GetMessagesByGroupId.ExecuteAsync(Guid.Parse(Id!));
+        MessagesList = executeAsync.Data.MessagesByGroupId.Nodes.ToList();
+        StateHasChanged();
     }
 }

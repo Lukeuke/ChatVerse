@@ -1,8 +1,10 @@
+using System.Net.Http.Headers;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using Web.Application.Authentication;
 using Web.Application.Repositories.Chat;
 using Web.Application.Repositories.Identity;
+using Web.Presentation;
 using Web.Presentation.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +29,19 @@ builder.Services.AddScoped<IChatRepository, ChatRepository>();
 
 builder.Services.AddAuthorizationCore();
 builder.Services.AddBlazoredLocalStorage();
+
+builder.Services.AddHttpClient(
+    CryptoClient.ClientName,
+    client =>
+    {
+        client.BaseAddress =
+            client.BaseAddress = new Uri("http://localhost:5106/graphql");
+        
+        client.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVkM2RmMGFlLWMwNGItNGU3Mi1iMGVhLTVkYWJlNDgwOWRmMSIsInVzZXJuYW1lIjoiTHV1cWUiLCJuYmYiOjE2OTE2MDc1MDIsImV4cCI6MTY5MjIxMjMwMiwiaWF0IjoxNjkxNjA3NTAyfQ.FCMWoC-dLJvRRveFspuQ_3YuIdLVbnLZlaDDoiY-Fco");
+    });
+
+builder.Services.AddCryptoClient();
 
 var app = builder.Build();
 
