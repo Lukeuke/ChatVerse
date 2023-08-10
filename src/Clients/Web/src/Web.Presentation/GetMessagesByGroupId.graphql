@@ -1,5 +1,5 @@
 ﻿query GetMessagesByGroupId($groupId: UUID!){
-    messagesByGroupId(groupId: $groupId){
+    messagesByGroupId(groupId: $groupId, order_by: {timeStampOffset: ASC}){
         nodes {
             content,
             senderFullName

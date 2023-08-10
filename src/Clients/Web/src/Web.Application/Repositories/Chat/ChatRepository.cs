@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Web.Domain.DTOs;
 using Web.Domain.Models.Chat;
 
 namespace Web.Application.Repositories.Chat;

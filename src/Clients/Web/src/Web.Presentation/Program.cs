@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Web.Application.Authentication;
 using Web.Application.Repositories.Chat;
 using Web.Application.Repositories.Identity;
+using Web.Application.Stores;
 using Web.Presentation;
 using Web.Presentation.Data;
 
@@ -29,16 +30,19 @@ builder.Services.AddScoped<IChatRepository, ChatRepository>();
 
 builder.Services.AddAuthorizationCore();
 builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddSingleton<TokenStore>();
 
 builder.Services.AddHttpClient(
     CryptoClient.ClientName,
-    client =>
+    (service, client) =>
     {
+        var store = service.GetRequiredService<TokenStore>();
+        
         client.BaseAddress =
             client.BaseAddress = new Uri("http://localhost:5106/graphql");
         
         client.DefaultRequestHeaders.Authorization =
-            new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVkM2RmMGFlLWMwNGItNGU3Mi1iMGVhLTVkYWJlNDgwOWRmMSIsInVzZXJuYW1lIjoiTHV1cWUiLCJuYmYiOjE2OTE2MDc1MDIsImV4cCI6MTY5MjIxMjMwMiwiaWF0IjoxNjkxNjA3NTAyfQ.FCMWoC-dLJvRRveFspuQ_3YuIdLVbnLZlaDDoiY-Fco");
+            new AuthenticationHeaderValue("Bearer", store.Jwt);
     });
 
 builder.Services.AddCryptoClient();

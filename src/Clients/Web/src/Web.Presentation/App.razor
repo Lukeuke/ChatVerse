@@ -1,4 +1,6 @@
 ﻿@using Web.Application.Helpers
+@using Web.Application.Stores
+@inject TokenStore TokenStore
 
 <CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly">
@@ -30,6 +32,8 @@
             jwt = jwt.Replace("\"", string.Empty);
             
             Console.WriteLine(jwt.ValidateJwt());
+            
+            TokenStore.Jwt = jwt;
         }
         
         await base.OnInitializedAsync();

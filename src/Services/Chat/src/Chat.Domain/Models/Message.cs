@@ -9,5 +9,6 @@ public class Message
     public string SenderId { get; set; } = null!;
     public string SenderFullName { get; set; } = null!;
     public string Content { get; set; } = null!;
+    public long TimeStampOffset { get; set; }
     public Guid GroupId { get; set; }
 }

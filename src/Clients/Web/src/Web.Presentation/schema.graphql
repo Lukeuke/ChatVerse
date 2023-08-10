@@ -9,8 +9,12 @@ type Message {
   senderId: String
   content: String
   senderFullName: String
+  timeStampOffset: Long
   groupId: UUID!
 }
+
+"The `Long` scalar type represents non-fractional signed whole 64-bit numeric values. Long can represent values between -(2^63) and 2^63 - 1."
+scalar Long
 
 enum ApplyPolicy {
   BEFORE_RESOLVER
@@ -78,6 +82,18 @@ input MessageFilter {
   content_not_ends_with: String
   content_in: [String!]
   content_not_in: [String!]
+  timeStampOffset: Long
+  timeStampOffset_not: Long
+  timeStampOffset_in: [Long!]
+  timeStampOffset_not_in: [Long!]
+  timeStampOffset_gt: Long
+  timeStampOffset_not_gt: Long
+  timeStampOffset_gte: Long
+  timeStampOffset_not_gte: Long
+  timeStampOffset_lt: Long
+  timeStampOffset_not_lt: Long
+  timeStampOffset_lte: Long
+  timeStampOffset_not_lte: Long
   groupId: UUID
   groupId_not: UUID
   groupId_in: [UUID!]
@@ -97,6 +113,7 @@ input MessageSort {
   senderId: SortOperationKind
   senderFullName: SortOperationKind
   content: SortOperationKind
+  timeStampOffset: SortOperationKind
   groupId: SortOperationKind
 }
 

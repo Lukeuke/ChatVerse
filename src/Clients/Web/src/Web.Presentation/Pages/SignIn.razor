@@ -3,10 +3,12 @@
 @inject NavigationManager NavigationManager
 @inject AuthenticationStateProvider AuthStateProvider
 @inject IIdentityRepository IdentityRepository
+@inject TokenStore TokenStore
 
 @using Web.Domain.DTOs
 @using Microsoft.AspNetCore.Components.Authorization
 @using Web.Application.Repositories.Identity
+@using Web.Application.Stores
 <h3>Sign-In</h3>
 
 <EditForm Model="@User" OnValidSubmit="LoginUser">
@@ -55,6 +57,8 @@
 
         await LocalStorage.SetItemAsync("token", token.Token);
         await AuthStateProvider.GetAuthenticationStateAsync();
+
+        TokenStore.Jwt = token.Token;
         
         NavigationManager.NavigateTo("/");
         return await Task.FromResult(true);

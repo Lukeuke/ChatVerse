@@ -5,6 +5,8 @@ using Chat.Domain.DTOs;
 using Chat.Domain.Helpers.Authorization;
 using Chat.Domain.Models;
 using HotChocolate.Subscriptions;
+using Newtonsoft.Json;
+using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace Chat.Application.Services;
 
@@ -36,7 +38,8 @@ public class MessageService : IMessageService
             Content = request.Content,
             SenderId = JwtHelper.ParseTokenIntoUserId(token).ToString(),
             GroupId = request.GroupId,
-            SenderFullName = user.Username
+            SenderFullName = user.Username,
+            TimeStampOffset = DateTimeOffset.Now.ToUnixTimeSeconds()
         };
 
         context.Messages.Add(message);
@@ -52,10 +55,10 @@ public class MessageService : IMessageService
         client.DefaultRequestHeaders.Add("Authorization", token);
         
         var result = await client.GetAsync("auth/user");
-
-        var stream = await result.Content.ReadAsStreamAsync();
         
-        return JsonSerializer.Deserialize<User>(stream)!;
+        var json = await result.Content.ReadAsStringAsync();
+
+        return JsonConvert.DeserializeObject<User>(json)!;
     }
     
     private async Task<bool> IsUserInGroup(Guid groupId, string token)

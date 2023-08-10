@@ -68,10 +68,14 @@ app.MapPost("/auth", (LoginUserRequestDto request, [FromServices] IdentityDbCont
 app.MapGet("/auth/user", ([FromServices] IUserRepository userRepo, [FromHeader] string authorization) =>
 {
     var jwt = authorization.Split(" ")[1];
-    var jwtPayload = JwtPayload.Deserialize(jwt);
 
-    var id = jwtPayload.GetValueOrDefault("id");
-    var user = userRepo.Get((Guid)id);
+    var handler = new JwtSecurityTokenHandler();
+    var jsonToken = handler.ReadToken(jwt);
+    var tokenS = jsonToken as JwtSecurityToken;
+
+    var id = tokenS.Claims.First(x => x.Type == "id").Value;
+    
+    var user = userRepo.Get(Guid.Parse(id));
 
     return user;
 });
