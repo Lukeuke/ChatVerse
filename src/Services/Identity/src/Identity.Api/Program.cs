@@ -80,4 +80,10 @@ app.MapGet("/auth/user", ([FromServices] IUserRepository userRepo, [FromHeader] 
     return user;
 });
 
+app.MapGet("/auth/user/{id:guid}", ([FromServices] IUserRepository userRepo, [FromHeader] string authorization, Guid id) =>
+{
+    var user = userRepo.Get(id);
+    return new { Username = user.Username };
+});
+
 app.Run();

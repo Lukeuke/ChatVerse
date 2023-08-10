@@ -44,7 +44,7 @@ builder.Services.AddHttpClient("identity", (provider, client) =>
 
 builder.Services
     .AddGraphQLServer()
-    .AddSocketSessionInterceptor<SocketSessionInterceptor>()
+    //.AddSocketSessionInterceptor<SocketSessionInterceptor>()
     //.AddHttpRequestInterceptor<HttpRequestInterceptor>()
     .AddQueryType<Query>()
     .AddType<MessageType>()

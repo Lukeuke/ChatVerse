@@ -1,10 +1,8 @@
 ﻿@attribute [Authorize]
 @page "/messages/{Id?}"
 @using Web.Application.Repositories.Chat
-@using Web.Domain.DTOs
 @using Web.Domain.Models.Chat
 @inject IChatRepository ChatRepository
-@inject ICryptoClient CryptoClient
 
 @if (Chats is null)
 {
@@ -14,57 +12,19 @@
 }
 else
 {
-    if (Id is null)
+    foreach (var chatModel in Chats)
     {
-        foreach (var chatModel in Chats)
-        {
-            <div>
-                <a @onclick='() => NavigationManager.NavigateTo($"messages/{chatModel.Id}")'><div>@chatModel.Name</div></a>
-            </div>
-        }
-    }
-    else
-    {
-        GetMessages();
-        if (MessagesList is null)
-        {
-            <div>
-                Loading...
-            </div>   
-        }
-        else
-        {
-            <div class="w-75">
-                @foreach (var message in MessagesList)
-                {
-                    <div class="bg-black rounded p-2 m-2">
-                        <div>@message!.SenderFullName says:</div>
-                        <div>@message.Content</div>
-                    </div>
-                }
-            </div>
-            
-            <div class="d-flex align-items-center w-100">
-                <div class="fixed-bottom w-50">
-                    <EditForm Model="@CreateMessage" OnValidSubmit="SendMessage">
-                        <input type="text" placeholder="Write message here..." class="form-control col-12" @bind="CreateMessage.Content"/>
-                        <input type="submit" class="form-control col-6 btn btn-primary" value="Send" />
-                    </EditForm>
-                </div>
-            </div>
-        }
+        <div class="p-2 m-2">
+            <a @onclick='() => NavigationManager.NavigateTo($"messages/g/{chatModel.Id}", true)' style="cursor: pointer;"><div>@chatModel.Name</div></a>
+        </div>
     }
 }
 
 @code {
     [Parameter]
     public string? Id { get; set; }
-    
+
     private List<ChatNameIdModel>? Chats { get; set; } = null;
-    private List<IGetMessagesByGroupId_MessagesByGroupId_Nodes?>? MessagesList { get; set; }
-    private bool Loaded { get; set; } = false;
-    
-    private CreateMessageDto CreateMessage { get; set; } = new ();
     
     protected override async Task OnInitializedAsync()
     {
@@ -73,31 +33,5 @@ else
         var chats = await ChatRepository.GetChats(jwt.Replace("\"", ""));
 
         Chats = chats.ToList();
-    }
-
-    private async Task GetMessages()
-    {
-        if (!Loaded)
-        {
-            Loaded = true;
-            var executeAsync = await CryptoClient.GetMessagesByGroupId.ExecuteAsync(Guid.Parse(Id!));
-            MessagesList = executeAsync.Data.MessagesByGroupId.Nodes.ToList();
-            StateHasChanged();
-        }
-    }
-
-    private async Task SendMessage()
-    {
-        var result = await CryptoClient.CreateMessage.ExecuteAsync(new CreateMessageDtoInput
-        {
-            Content = CreateMessage.Content,
-            GroupId = Guid.Parse(Id!)
-        });
-
-        if (result.Data.CreateMessage)
-        {
-            CreateMessage.Content = string.Empty;
-            await GetMessages();
-        }
     }
 }

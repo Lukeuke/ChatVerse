@@ -15,27 +15,20 @@
     <projectFile profileName="https">src/Services/Identity/src/Identity.Api/Identity.Api.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b0d69a9-2ee2-415a-bb03-954b7367a08f" name="Changes" comment="Added Querying Messages by GroupId">
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Stores/TokenStore.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Domain/DTOs/CreateMessageDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/CreateMessage.graphql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Migrations/20230809230856_TimeStampMessage.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Migrations/20230809230856_TimeStampMessage.cs" afterDir="false" />
+    <list default="true" id="4b0d69a9-2ee2-415a-bb03-954b7367a08f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Domain/Models/Member.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Domain/Models/UsernameModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/GroupSubscribe.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/GroupPage.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Repositories/Chat/ChatRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Repositories/Chat/ChatRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Repositories/Chat/IChatRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Application/Repositories/Chat/IChatRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/App.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/App.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/GetMessagesByGroupId.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/GetMessagesByGroupId.graphql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/Messages.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/Messages.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/SignIn.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/SignIn.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Web.Presentation.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Web.Presentation.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/schema.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Chat.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Chat.Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/MessageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/MessageService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Types/MessageType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Types/MessageType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Migrations/ChatDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Migrations/ChatDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Models/Message.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Models/Message.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Group.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Group.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/Identity/src/Identity.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Identity/src/Identity.Api/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,19 +39,23 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/126693d9e74b4f199d3b9f5ddfb200af688b0/85/677e08ed/RequestDelegateFactory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/901f7b09ae3e48c1bc354a673a1060653a078/28/a227b2ff/ComponentBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/901f7b09ae3e48c1bc354a673a1060653a078/2f/13e3d80b/ComponentState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e10abf15635f4ee5b72237e5fd740bb340880/3f/be9034a6/DefaultHttpContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/535069256dfceefc92c26652f108d366834decc8e8b478126511b71ac5778/DefaultHttpRequestInterceptor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5ab5ee67706767c16f2a882164382ec6d7329bc797493287ae05cdf8ece2c3/RenderMode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7b3b6985aad11c5d633d75b545f5f5f4fc7e50918ad1cb9f6b615682f5bfb76d/SingleQueryingEnumerable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/93d86075cc58e07d2afce083125d06d266cbabf93e4ec1d45c224d86a4a38e/DateTimeOffset.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9e1d0135548ba4f63a973eb8517fa7a9833d0357e9d91f29d7079e2ec8a9ffc/JwtSecurityTokenHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9ff4a377ddd8b8376a34e93b525519e26e3989a7f57783aa958abc10f5ec87/AsyncValueTaskMethodBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b2c66afceabede0107eef1a7e53aaa548bdf28d878c14952ca578c37f823f/AnonymousObserver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d7107330227299cbf0fa1b886ef73b3409347f34907ed6a29ba7e97f40e17d/JsonSerializerInternalReader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d9d9faea5e6ed6438a777ef8c6eed41261f81d8e86488ed923ad92564f54e/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="Toolset" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2StDYazKwgWjQqjjmCElI3hfOEK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -274,7 +271,9 @@
       <workItem from="1690021990308" duration="2675000" />
       <workItem from="1690048858305" duration="7868000" />
       <workItem from="1690145974282" duration="2329000" />
-      <workItem from="1691606519656" duration="21413000" />
+      <workItem from="1691606519656" duration="27962000" />
+      <workItem from="1691665900131" duration="1052000" />
+      <workItem from="1691671323202" duration="1130000" />
     </task>
     <task id="LOCAL-00001" summary="Added Blazor WASM as Front-end, named ``Web.Presentation``">
       <created>1689958492791</created>
@@ -297,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691621854617</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Blazor - Creating Messages">
+      <created>1691628607164</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1691628607164</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,7 +328,8 @@
     <MESSAGE value="Added Blazor WASM as Front-end, named ``Web.Presentation``" />
     <MESSAGE value="Changed Blazor WASM to Server" />
     <MESSAGE value="Added Querying Messages by GroupId" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Querying Messages by GroupId" />
+    <MESSAGE value="Blazor - Creating Messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Blazor - Creating Messages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

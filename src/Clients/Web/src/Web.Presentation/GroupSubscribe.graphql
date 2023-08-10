@@ -1,0 +1,7 @@
+﻿subscription GroupSubscribe($groupId: String){
+    messageCreated(groupId: $groupId){
+        senderFullName,
+        content,
+        timeStampOffset
+    }
+}

@@ -19,9 +19,14 @@ builder.Services.AddHttpClient("identity", client =>
     client.BaseAddress = new Uri("http://localhost:5222");
 });
 
-builder.Services.AddHttpClient("group", client =>
+builder.Services.AddHttpClient("group", (service, client) =>
 {
     client.BaseAddress = new Uri("http://localhost:5008");
+            
+    var store = service.GetRequiredService<TokenStore>();
+    
+    client.DefaultRequestHeaders.Authorization =
+        new AuthenticationHeaderValue("Bearer", store.Jwt);
 });
 
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
@@ -43,6 +48,14 @@ builder.Services.AddHttpClient(
         
         client.DefaultRequestHeaders.Authorization =
             new AuthenticationHeaderValue("Bearer", store.Jwt);
+    });
+
+builder.Services.AddWebSocketClient(
+        CryptoClient.ClientName,
+    (service, client) =>
+    {
+        client.Uri =
+            client.Uri = new Uri("ws://localhost:5106/graphql");
     });
 
 builder.Services.AddCryptoClient();

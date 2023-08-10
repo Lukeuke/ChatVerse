@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +37,16 @@ var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGet("/group/{id:guid}", (Guid id, IGroupRepository groupRepository) => groupRepository.GetMembers(id)).RequireAuthorization();
+app.MapGet("/group/{id:guid}", (Guid id, IGroupRepository groupRepository) =>
+{
+    var json = JsonConvert.SerializeObject(groupRepository.GetMembers(id), Formatting.Indented, new JsonSerializerSettings
+    {
+        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+    });
+
+    return json;
+
+}).RequireAuthorization();
 
 app.MapGet("/groups/me", ([FromHeader] string authorization, IGroupRepository groupRepository) => 
     groupRepository.GetAllForUser(authorization)).RequireAuthorization();
