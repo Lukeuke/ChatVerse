@@ -13,7 +13,9 @@ public class ChatDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<ReadStatus>().HasOne(x => x.Message);
     }
 
     public DbSet<Message> Messages { get; set; }
+    public DbSet<ReadStatus> ReadStatus { get; set; }
 }

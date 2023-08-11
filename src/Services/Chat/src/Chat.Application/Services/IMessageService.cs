@@ -7,4 +7,5 @@ namespace Chat.Application.Services;
 public interface IMessageService
 {
     Task<bool> Create(ChatDbContext context,CreateMessageDto request, [Service] ITopicEventSender eventSender, string token);
+    Task<bool> ReadStatus(ChatDbContext context, ReadStatusDto request, [Service] ITopicEventSender eventSender, string token);
 }

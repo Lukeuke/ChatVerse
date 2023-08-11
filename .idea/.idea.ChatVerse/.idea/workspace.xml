@@ -19,20 +19,23 @@
     <projectFile profileName="https">src/Services/Identity/src/Identity.Api/Identity.Api.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2297be5d-ec52-4ad1-af3a-4fd099348f70" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/wwwroot/js/scrollFunctions.js" afterDir="false" />
+    <list default="true" id="2297be5d-ec52-4ad1-af3a-4fd099348f70" name="Changes" comment="Added Cors">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/GroupPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Pages/GroupPage.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/Shared/NavMenu.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clients/Web/src/Web.Presentation/_Imports.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Identity/src/Identity.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Identity/src/Identity.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Mutation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Mutation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Subscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/GraphQL/Subscription.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/IMessageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/IMessageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/MessageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Application/Services/MessageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Data/ChatDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Data/ChatDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Helpers/Authorization/JwtHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Helpers/Authorization/JwtHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Migrations/ChatDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Chat/src/Chat.Domain/Migrations/ChatDbContextModelSnapshot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/lukas/RiderProjects/ChatVerse/src/Services/Identity/src/Identity.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -47,10 +50,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.Chat.Api: http">
+  <component name="RunManager" selected=".NET Launch Settings Profile.Chat.Api: https">
     <configuration name="Chat.Api: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Services/Chat/src/Chat.Api/Chat.Api.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
@@ -300,8 +304,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1691758100480</updated>
-      <workItem from="1691758114517" duration="9603000" />
+      <workItem from="1691758114517" duration="15577000" />
     </task>
+    <task id="LOCAL-00001" summary="Added Cors">
+      <created>1691785164649</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1691785164649</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,5 +334,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Added Cors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Cors" />
   </component>
 </project>

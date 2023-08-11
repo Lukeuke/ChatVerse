@@ -18,4 +18,16 @@ public class Subscription
 
         return null; // Return null if the message doesn't match the groupId filter.
     }
+    
+    [Subscribe]
+    [UseFiltering]
+    public List<ReadStatus>? MessageReadStatus([EventMessage] List<ReadStatus>? users, string groupId) 
+    {
+        if (users.Any(x => x.GroupId != Guid.Parse(groupId)))
+        {
+            return null;
+        }
+
+        return users;
+    }
 }

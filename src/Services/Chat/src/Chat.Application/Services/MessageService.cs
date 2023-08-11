@@ -36,7 +36,7 @@ public class MessageService : IMessageService
         {
             Id = Guid.NewGuid(),
             Content = request.Content,
-            SenderId = JwtHelper.ParseTokenIntoUserId(token).ToString(),
+            SenderId = JwtHelper.ParseTokenIntoUserIdHeader(token).ToString(),
             GroupId = request.GroupId,
             SenderFullName = user.Username,
             TimeStampOffset = DateTimeOffset.Now.ToUnixTimeSeconds()
@@ -47,6 +47,39 @@ public class MessageService : IMessageService
 
         await eventSender.SendAsync(nameof(Subscription.MessageCreated), message);
         return true;
+    }
+
+    public async Task<bool> ReadStatus(ChatDbContext context, ReadStatusDto request, ITopicEventSender eventSender, string token)
+    {
+        try
+        {
+            if (!await IsUserInGroup(request.GroupId, token))
+            {
+                return false;
+            }
+        
+            var user = await GetUser(token);
+
+            await context.ReadStatus.AddAsync(new ReadStatus
+            {
+                MessageId = request.MessageId,
+                GroupId = request.GroupId,
+                Message = context.Messages.First(x => x.Id == request.MessageId),
+                SenderId = user.Id,
+                SenderUsername = user.Username
+            });
+
+            await context.SaveChangesAsync();
+
+            var readStatusEnumerable = context.ReadStatus.Where(x => x.GroupId == request.GroupId && x.MessageId == request.MessageId);
+
+            await eventSender.SendAsync(nameof(Subscription.MessageReadStatus), readStatusEnumerable.ToList());
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     private async Task<User> GetUser(string token)
