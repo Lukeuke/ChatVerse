@@ -20,13 +20,7 @@ builder.Services.AddSingleton(settings);
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("CorsPolicy",
-        builder => builder.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
-});
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -85,5 +79,10 @@ app.MapGet("/auth/user/{id:guid}", ([FromServices] IUserRepository userRepo, [Fr
     var user = userRepo.Get(id);
     return new { Username = user.Username };
 });
+
+app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 app.Run();

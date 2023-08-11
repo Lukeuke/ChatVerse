@@ -6,9 +6,11 @@
 @using Web.Domain.Models.Chat
 @using Newtonsoft.Json
 @using Microsoft.AspNetCore.Components
+@using Web.Application.Stores
 @inject IChatRepository ChatRepository
 @inject ICryptoClient CryptoClient
 @inject IHttpClientFactory HttpClient
+@inject TokenStore TokenStore
 
 @if (MessagesList is null || MembersAndCount.Value.users is null)
 {
@@ -19,7 +21,7 @@
 else
 {
     <div class="d-flex w-100">
-        <div class="w-75">
+        <div class="w-75 overflow-auto mb-2 messages-container" id="message-container">
             @foreach (var message in MessagesList)
             {
                 <div class="bg-black rounded p-2 m-2">
@@ -31,8 +33,8 @@ else
             }
         </div>
         
-        <div class="w-25">
-            <div class="position-sticky h-auto">
+        <div class="w-25 position-sticky p-2">
+            <div>
                 <div>
                     Chat Members:
                     <div>
@@ -48,17 +50,25 @@ else
                 </div>
             </div>
         </div>
-    </div>
-    <div class="d-flex align-items-center w-100">
-        <div class="fixed-bottom w-50">
+        <div class="fixed-bottom p-3 w-50" style="margin-left: 20%">
             <EditForm Model="@CreateMessage" OnValidSubmit="SendMessage">
-                <input type="text" placeholder="Write message here..." class="form-control col-12" @bind="CreateMessage.Content"/>
-                <input type="submit" class="form-control col-6 btn btn-primary" value="Send" />
+            <div class="d-flex">
+                <input type="text" placeholder="Write message here..." class="form-control w-75" @bind="CreateMessage.Content"/>
+                <input type="submit" class="form-control col-6 btn btn-primary w-25" value="Send" />
+            </div>
             </EditForm>
         </div>
     </div>
+    
+    <style>
+        .messages-container {
+            max-height: 85vh;
+            overflow-y: auto;
+              display: flex;
+              flex-direction: column;
+        }
+    </style>
 }
-
 @code {
     [Parameter]
     public string Id { get; set; }
@@ -67,7 +77,8 @@ else
     private List<IGetMessagesByGroupId_MessagesByGroupId_Nodes?>? MessagesList { get; set; } = new();
     private (List<string>? users, int Count)? MembersAndCount { get; set; } = new();
     private bool Loaded { get; set; } = false;
-    private bool Subscribed { get; set; } = false;
+
+    private string Username { get; set; }
     
     private CreateMessageDto CreateMessage { get; set; } = new ();
     
@@ -75,6 +86,8 @@ else
     {
         var jwt = await LocalStorage.GetItemAsStringAsync("token");
 
+        Username = await LocalStorage.GetItemAsStringAsync("username");
+        
         var chats = await ChatRepository.GetChats(jwt.Replace("\"", ""));
 
         Chats = chats.ToList();
@@ -124,20 +137,21 @@ else
     
     private void SubscribeToGroup()
     {
-        if (!Subscribed)
+        CryptoClient.GroupSubscribe.Watch(Id).Subscribe(r =>
         {
-            CryptoClient.GroupSubscribe.Watch(Id).Subscribe(r =>
-            {
-                var data = r.Data.MessageCreated;
-                MessagesList!.Add(new GetMessagesByGroupId_MessagesByGroupId_Nodes_Message(data.Content, data.SenderFullName, data.TimeStampOffset));
-            });
-            Subscribed = true;
-            StateHasChanged();
-        }
+            var data = r.Data?.MessageCreated;
+            MessagesList?.Add(new GetMessagesByGroupId_MessagesByGroupId_Nodes_Message(data?.Content, data?.SenderFullName, data?.TimeStampOffset));
+        });
+        StateHasChanged();
+        Console.WriteLine($"{Username} has subscribed");
     }
 
     private async Task SendMessage()
     {
+        var jwt = await LocalStorage.GetItemAsStringAsync("token");
+
+        TokenStore.Jwt = jwt.Replace("\"", "");
+        
         var result = await CryptoClient.CreateMessage.ExecuteAsync(new CreateMessageDtoInput
         {
             Content = CreateMessage.Content,

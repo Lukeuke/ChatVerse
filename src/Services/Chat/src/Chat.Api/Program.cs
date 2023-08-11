@@ -18,6 +18,8 @@ builder.Services.AddDbContext<ChatDbContext>(o =>
 
 builder.Services.AddScoped<IMessageService, MessageService>();
 
+builder.Services.AddCors();
+
 var settings = new Settings();
 builder.Configuration.Bind("Settings", settings);
 builder.Services.AddSingleton(settings);
@@ -56,6 +58,11 @@ builder.Services
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
+
+app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 app.UseWebSockets();
 

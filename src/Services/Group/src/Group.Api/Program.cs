@@ -18,6 +18,8 @@ builder.Services.AddDbContext<GroupDbContext>(o =>
 
 builder.Services.AddScoped<IGroupRepository, GroupRepository>();
 
+builder.Services.AddCors();
+
 var settings = new Settings();
 builder.Configuration.Bind("Settings", settings);
 builder.Services.AddSingleton(settings);
@@ -86,5 +88,10 @@ app.MapDelete("/group/{groupId:guid}", async (Guid groupId, [FromBody] AddToGrou
 
     return Results.BadRequest(content);
 }).RequireAuthorization();
+
+app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 app.Run();
