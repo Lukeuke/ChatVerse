@@ -50,20 +50,20 @@ app.MapGet("/group/{id:guid}", (Guid id, IGroupRepository groupRepository) =>
 
 }).RequireAuthorization();
 
-app.MapGet("/groups/me", ([FromHeader] string authorization, IGroupRepository groupRepository) => 
+app.MapGet("/groups/me", ([FromHeader] string authorization, [FromServices] IGroupRepository groupRepository) => 
     groupRepository.GetAllForUser(authorization)).RequireAuthorization();
 
-app.MapGet("/group/{groupId:guid}/has_member", (Guid groupId, IGroupRepository groupRepository, [FromHeader] string authorization) => groupRepository
+app.MapGet("/group/{groupId:guid}/has_member", (Guid groupId, [FromServices] IGroupRepository groupRepository, [FromHeader] string authorization) => groupRepository
     .CheckMember(authorization, groupId))
     .RequireAuthorization();
 
-app.MapPut("/group", async (CreateGroupRequestDto createGroupRequestDto, IGroupRepository groupRepository, [FromHeader] string authorization) =>
+app.MapPut("/group/{name}", async (string name, [FromServices] IGroupRepository groupRepository, [FromHeader] string authorization) =>
 {
-    var model = await groupRepository.Create(authorization, createGroupRequestDto);
+    var model = await groupRepository.Create(authorization, new CreateGroupRequestDto{Name = name});
     return TypedResults.Created($"/group/{model.Id}", model);
 }).RequireAuthorization();
 
-app.MapPost("/group/{groupId:guid}", async (Guid groupId, [FromBody] AddToGroupRequestDto request, IGroupRepository groupRepository, [FromHeader] string authorization) =>
+app.MapPost("/group/{groupId:guid}", async (Guid groupId, [FromBody] AddToGroupRequestDto request, [FromServices] IGroupRepository groupRepository, [FromHeader] string authorization) =>
 {
     var (success, content) = await groupRepository.AddUserToGroup(authorization, request.UserId, groupId);
     
@@ -77,7 +77,7 @@ app.MapPost("/group/{groupId:guid}", async (Guid groupId, [FromBody] AddToGroupR
 }).RequireAuthorization();
 
 app.MapDelete("/group/{groupId:guid}", async (Guid groupId, [FromBody] AddToGroupRequestDto request,
-    IGroupRepository groupRepository, [FromHeader] string authorization) =>
+    [FromServices] IGroupRepository groupRepository, [FromHeader] string authorization) =>
 {
     var (success, content) = await groupRepository.DeleteUserFromGroup(authorization, request.UserId, groupId);
 
