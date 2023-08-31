@@ -50,7 +50,7 @@ app.MapGet("/group/{id:guid}", (Guid id, IGroupRepository groupRepository) =>
 
 }).RequireAuthorization();
 
-app.MapGet("/groups/me", ([FromHeader] string authorization, [FromServices] IGroupRepository groupRepository) => 
+app.MapGet("/group/all/me", ([FromHeader] string authorization, [FromServices] IGroupRepository groupRepository) => 
     groupRepository.GetAllForUser(authorization)).RequireAuthorization();
 
 app.MapGet("/group/{groupId:guid}/has_member", (Guid groupId, [FromServices] IGroupRepository groupRepository, [FromHeader] string authorization) => groupRepository
