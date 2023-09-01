@@ -35,16 +35,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2297be5d-ec52-4ad1-af3a-4fd099348f70" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Proxy/src/ReverseProxy/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Proxy/src/ReverseProxy/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clients/Web/src/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Proxy/src/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Services/Group/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Services/Identity/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ChatVerse/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChatVerse.sln" beforeDir="false" afterPath="$PROJECT_DIR$/ChatVerse.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Group/src/Group.Api/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="Main" />
+      </list>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4d6d6283215de958b1baadc74d6f99ce76f43090cfc86e26e51d845b779450/IFormFile.cs" root0="SKIP_HIGHLIGHTING" />
@@ -416,7 +423,8 @@
       <workItem from="1693435828888" duration="2855000" />
       <workItem from="1693489530920" duration="9110000" />
       <workItem from="1693512369860" duration="35000" />
-      <workItem from="1693515368565" duration="8588000" />
+      <workItem from="1693515368565" duration="8967000" />
+      <workItem from="1693526539588" duration="889000" />
     </task>
     <task id="LOCAL-00001" summary="Added Cors">
       <created>1691785164649</created>
@@ -439,7 +447,28 @@
       <option name="project" value="LOCAL" />
       <updated>1693512397476</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added Reverse Proxy">
+      <created>1693526197926</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1693526197926</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added Reverse Proxy">
+      <created>1693526213754</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1693526213754</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added Reverse Proxy">
+      <created>1693526241112</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1693526241112</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,6 +491,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Added Cors" />
     <MESSAGE value="``File Service``&#10;- Sending files&#10;- Audio, Video, Image file recognition" />
-    <option name="LAST_COMMIT_MESSAGE" value="``File Service``&#10;- Sending files&#10;- Audio, Video, Image file recognition" />
+    <MESSAGE value="Added Reverse Proxy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Reverse Proxy" />
   </component>
 </project>
