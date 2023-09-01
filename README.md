@@ -14,6 +14,7 @@
       - .NET 7 
       - C#
       - ASP.NET Minimal Web API
-      - GraphQL
+      - GraphQL (HotChocolate)
       -	Postgres
+      -	YARP Reverse Proxy
     </details>
